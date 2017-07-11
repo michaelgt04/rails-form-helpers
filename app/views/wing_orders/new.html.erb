@@ -1,0 +1,90 @@
+<h1>New Wing Order</h1>
+<%= form_for @wing_order, html:{ class: 'new_wing_order', id: 'new_wing_order' } do |f| %>
+  <div class='row'>
+    <%= f.label :customer_name, 'Full Name' %>
+    <%= f.text_field :customer_name %>
+  </div>
+
+  <div class='row'>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+
+  <div class='row'>
+    <%= f.select :state, @state_collection, selected: 'MA' %>
+  </div>
+
+  <div class="row">
+      <%= f.label :quantity %>
+      <%= f.collection_radio_buttons(:quantity, @quantity_collection, :first, :last) %>
+  </div>
+
+  <div class="row">
+      <%= f.label :ranch_dressing, "Add Ranch Dressing" %>
+      <%= f.check_box(:ranch_dressing) %>
+  </div>
+
+  <div class='row'>
+      <%= f.label :flavor %>
+      <%= f.collection_check_boxes :flavor_ids, @flavor_collection, :id, :name %>
+  </div>
+
+  <div class="row">
+    <%= f.label :submit %>
+    <%= f.submit 'Place Order' %>
+  </div>
+
+<% end %>
+<!-- <form class="new_wing_order" id="new_wing_order" action="/wing_orders" accept-charset="UTF-8" method="post">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="authenticity_token" value="2PGpBg7eEvtrzp9P7+C4mGH1ieW0mg0w9c+1l1SgeK1+ra8GEg5iDkZ26nEVkjRJCkcjgmMjH5CLwdoI2d1XLA==">
+
+  <div class="row">
+    <label for="wing_order_customer_name">Full Name</label>
+    <input type="text" name="wing_order[customer_name]" id="wing_order_customer_name">
+  </div>
+
+  <div class="row">
+    <label for="wing_order_city">City</label>
+    <input type="text" name="wing_order[city]" id="wing_order_city">
+  </div>
+
+  <div class="row">
+    <label for="wing_order_state">State</label>
+    <select name="wing_order[state]" id="wing_order_state">
+      <% @state_collection.each do |state_array| %>
+        <option value="<%= state_array.last %>"><%= state_array.first %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="row">
+    <label for="wing_order_quantiy">Quantity</label>
+
+    <% @quantity_collection.each do |quantity_array| %>
+      <input type="radio" value="<%= quantity_array.first %>" name="wing_order[quantity]" id="<%= "wing_order_quantity_#{quantity_array.first}" %>">
+      <label for="<%= "wing_order_quantity_#{quantity_array.first}" %>"><%= quantity_array.last %></label>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <label for="wing_order_ranch_dressing">Add Ranch Dressing</label>
+    <input name="wing_order[ranch_dressing]" type="hidden" value="0">
+    <input type="checkbox" value="1" name="wing_order[ranch_dressing]" id="wing_order_ranch_dressing">
+  </div>
+
+  <div class="row">
+    <label for="wing_order_flavor_ids">Flavors</label>
+
+    <% @flavor_collection.each do |flavor| %>
+      <input type="checkbox" value="<%= flavor.id %>" name="wing_order[flavor_ids][]" id="<%= "#{flavor.id}" %>">
+      <label for="<%= "#{flavor.id}" %>"><%= "#{flavor.name}" %></label>
+    <% end %>
+
+    <input type="hidden" name="wing_order[flavor_ids][]" value="">
+  </div>
+
+  <div class="row">
+    <input type="submit" name="commit" value="Place Order">
+  </div>
+</form> -->
